@@ -1,4 +1,3 @@
-from functools import lru_cache
 from typing import ClassVar, List, cast
 
 from pydantic.dataclasses import dataclass
@@ -19,7 +18,6 @@ class CardTransaction(Transaction):
     card_type: CardType
 
     @property  # type: ignore
-    @lru_cache()
     def related_card_transactions(self) -> List['CardTransaction']:
         related = []
         for uri in self.related_card_transaction_uris:
